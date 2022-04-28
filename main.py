@@ -37,14 +37,14 @@ while keep_going:
 
     # Detect contact with wall
     if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
-        keep_going = False
-        scoreboard.game_over()
+        snake.reset()
+        scoreboard.reset()
 
     # Detect contact with tail
     for segment in snake.segments[1:]:
-        if snake.head.distance(segment) < 10:
-            keep_going = False
-            scoreboard.game_over()
+        if snake.head.distance(segment) < 1:
+            snake.reset()
+            scoreboard.reset()
 
 
 

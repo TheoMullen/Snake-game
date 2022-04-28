@@ -46,21 +46,29 @@ class Snake:
         self.add_segment(self.segments[-1].position())
 
 
+    def reset(self):
+        for _ in self.segments:
+            _.goto(1000,1000)
+        self.segments.clear()
+        self.create_snake()
+        self.head = self.segments[0]
+
 
     def up(self):
-        if self.head.heading() != down:
+        #There must be a condition to prevent the snake going back on itself
+        if self.head.xcor() - self.segments[1].xcor() > 2 or self.head.xcor() - self.segments[1].xcor() < -2:
             self.head.setheading(up)
 
     def down(self):
-        if self.head.heading() != up:
+        if self.head.xcor() - self.segments[1].xcor() > 2 or self.head.xcor() - self.segments[1].xcor() < -2:
             self.head.setheading(down)
 
     def left(self):
-        if self.head.heading() != right:
+        if self.head.ycor() - self.segments[1].ycor() > 2 or self.head.ycor() - self.segments[1].ycor() < -2:
             self.head.setheading(left)
 
     def right(self):
-        if self.head.heading() != left:
+        if self.head.ycor() - self.segments[1].ycor() > 2 or self.head.ycor() - self.segments[1].ycor() < -2:
             self.head.setheading(right)
 
 
